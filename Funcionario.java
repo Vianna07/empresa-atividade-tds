@@ -10,6 +10,10 @@ public abstract class Funcionario {
 		this.salarioBase = salarioBase;
 		this.cargo = cargo;
 	}
+	
+	public Funcionario(String cargo) {
+		this.cargo = cargo;
+	}
 
 	public String getNome() {
 		return nome;
@@ -36,17 +40,21 @@ public abstract class Funcionario {
 	}
 	
 	public abstract double calcularSalario();
+	public abstract Funcionario cadastrarFuncionario();
 	
 	public void exibirDetalhes() {
+		System.out.println("================================");
 		System.out.println("Nome: " + this.nome);
 		System.out.println("Salario: " + this.salarioBase);
 		System.out.println("Cargo: " + this.cargo);
 	}
 	
-	public static Funcionario cadastrarFuncionario(Funcionario funcionario) {		
-		System.out.println("=== CADASTRANDO " + funcionario.cargo + " ===");
-		System.out.println("| Nome: ");
+	public Funcionario cadastrarFuncionario(Funcionario funcionario) {
+		System.out.println("|== CADASTRANDO " + funcionario.cargo + " ==|");
+		System.out.print("|== Nome: ");
 		funcionario.nome = GestaoFuncionario.scanner.nextLine();
+		System.out.print("|== Salario Base: ");
+		funcionario.salarioBase = GestaoFuncionario.scanner.nextDouble();
 		
 		return funcionario;
 	}
